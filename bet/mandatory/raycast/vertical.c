@@ -6,7 +6,7 @@
 /*   By: cahaik <cahaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 10:24:36 by cahaik            #+#    #+#             */
-/*   Updated: 2025/03/17 13:27:17 by cahaik           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:47:21 by cahaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double vertical_distance(t_map *map, t_ray ray)
 		if (!f_point)
 		{
 			if (ray.right)
-				x = (ceil(x_f / TILESIZE) * TILESIZE) + TILESIZE;
+				x = (floor(x_f / TILESIZE) * TILESIZE) + TILESIZE;
 			else if (ray.left)
 				x = (floor(x_f / TILESIZE) * TILESIZE) - 0.0000000001;
 			y = y_f + (tan(ray.ray_angle) * (x - x_f));
