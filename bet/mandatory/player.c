@@ -6,7 +6,7 @@
 /*   By: cahaik <cahaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 19:28:56 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/03/15 19:35:12 by cahaik           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:09:10 by cahaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void update_player_p(mlx_key_data_t key, void *param)
 	t_map *map = (t_map *)param;
 	// draw_map(map);
 	// draw_player(map, map->img, 1);
-
+	
 	double rotation_speed = 2 * (M_PI / 180);
 	double move_speed = 1.5;
 	double old_x = map->player.move_x;
@@ -105,9 +105,7 @@ void update_player_p(mlx_key_data_t key, void *param)
         map->player.move_y = new_y;
     }
     else
-    {
         printf("Out of bounds! X: %.2f, Y: %.2f\n", new_x, new_y);
-    }
 	mlx_delete_image(map->mlx, map->img);
 	map->img = mlx_new_image(map->mlx, map->width, map->height);
 	draw_map(map);

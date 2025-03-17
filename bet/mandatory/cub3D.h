@@ -6,7 +6,7 @@
 /*   By: cahaik <cahaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:17:04 by cahaik            #+#    #+#             */
-/*   Updated: 2025/03/15 16:44:26 by cahaik           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:20:26 by cahaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 #define TILESIZE 32
 // #define LINES 0x5FFBF1
 // #define COLS 18
-// #define	WIDTH (COLS * TILESIZE)
-// #define HEIGHT (LINES * TILESIZE)
+#define	WIDTH 1024
+#define HEIGHT 1024
 #define FOV (60 * (M_PI / 180))
 #define RES 4
-#define RAYS_NUMBER (1024) // width not 1024 and round it
+#define RAYS_NUMBER (4000) // width not 1024 and round it
 #define ANGLE (FOV / (RAYS_NUMBER - 1))
 
 
@@ -64,6 +64,15 @@ typedef struct s_ray
 	double ray_angle;
 	int ray_x;
 	int ray_y;
+	int down;
+	int up;
+	int right;
+	int left;
+	int distance;
+	int x_h_wall;
+	int y_h_wall;
+	int x_v_wall;
+	int y_v_wall;
 } t_ray;
 
 typedef struct s_map
@@ -102,6 +111,10 @@ void parse_textures_util(t_map *map, int i,char* line);
 void free_linked_list(t_identifier *id, int flag);
 char *convert_to_space(char *str);
 void set_rays_angle(t_map *map);
+double horizontal_distance(t_map *map, t_ray ray);
+void ray_look_direction(double *angle, t_ray *ray);
+double vertical_distance(t_map *map, t_ray ray);
+int wall_existance(t_map *map, double x, double y);
 
 void update_player_p(mlx_key_data_t key, void *param);
 void	draw_filled_circle(mlx_image_t *img, int cx, int cy, int radius, int color);
