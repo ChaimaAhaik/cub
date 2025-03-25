@@ -6,13 +6,13 @@
 /*   By: cahaik <cahaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 13:46:51 by cahaik            #+#    #+#             */
-/*   Updated: 2025/02/25 16:48:32 by cahaik           ###   ########.fr       */
+/*   Updated: 2025/03/23 15:17:51 by cahaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-t_identifier	*cub_lstnew()
+t_identifier	*cub_lstnew(void)
 {
 	t_identifier	*new;
 

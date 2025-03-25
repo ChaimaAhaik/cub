@@ -6,18 +6,17 @@
 /*   By: cahaik <cahaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 01:15:50 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/03/17 12:53:48 by cahaik           ###   ########.fr       */
+/*   Updated: 2025/03/23 09:56:44 by cahaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	draw_filled_circle(mlx_image_t *img, int cx, int cy, int radius, int color)
 {
 	int x;
 	int y;
-	double angle;
 
 	y = -radius;
 	while (y <= radius)
@@ -89,8 +88,6 @@ void draw_line(mlx_image_t *img, int x0, int y0, int x1, int y1, int color)
     }
 }
 
-
-
 void	draw_tile_pixels(mlx_image_t *img, int x, int y, int color)
 {
 	int	i;
@@ -98,7 +95,6 @@ void	draw_tile_pixels(mlx_image_t *img, int x, int y, int color)
 	
 	i = 0;
 	j = 0;
-
 	while (i < TILESIZE - 1)
 	{
 		j = 0;
@@ -120,22 +116,22 @@ void	draw_map(t_map *map)
 
 	x = 0;
 	y = 0;
-	while (y < map->row)
+	while (y < (int)map->row)
     {
 		x = 0;
 		// printf("%d\n", map.player.x);
 		// printf("%d\n", map.player.y);
-        while (x < ft_strlen(map->cmap[0]) - 1)
+        while (x < (int)ft_strlen(map->cmap[y]) - 1)
         {
 			px = x * TILESIZE;
 			py = y * TILESIZE;
-			if (map->cmap[y][x] == '1')
+			if (map && y < (int)map->row && map->cmap[y] && map->cmap[y][x] == '1')
 			{
 				//  printf("drawing wall at (%d, %d)\n", px, py);
-            	draw_tile_pixels(map->img, px, py, 0xFFFFFFFF);
+            	// draw_tile_pixels(map->img, px, py, 0xFFFFFFFF);
 			}
 			else if (map->cmap[y][x] == '0' || map->cmap[y][x] == map->cmap[map->player.y][map->player.x])
-            	draw_tile_pixels(map->img, px, py, 0xFFB347);
+            	// draw_tile_pixels(map->img, px, py, 0xFFB347);
 			// commenteta hitax manhtajux n3adelula xi color u
 			//zidt player mot3u ytlewn nhal 0
 			// else
